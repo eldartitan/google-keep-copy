@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import AppRoutes from './appRoutes';
+import { KeepContextProvider } from './context';
+import { LabelContextProvider } from './context/LabelContext';
+import { SearchContextProvider } from './context/SearchContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SearchContextProvider>
+      <LabelContextProvider>
+        <KeepContextProvider>
+          <div style={{color: "#5f6368"}} className="App">
+            <AppRoutes />
+          </div>
+        </KeepContextProvider>
+      </LabelContextProvider>
+    </SearchContextProvider>
   );
 }
 
